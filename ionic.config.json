@@ -1,0 +1,7 @@
+{
+  "name": "ColocScopie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
