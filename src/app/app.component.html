@@ -1,3 +1,43 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane>
+    <ion-menu side="start" contentId="main">
+      <ion-header>
+        <ion-toolbar color="tertiary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item class="menu-item">
+            <ion-icon name="home-outline"></ion-icon>
+            <div style="margin-inline: 0.5rem;" routerLinkActive="true" routerLink="/home">Accueil</div>
+          </ion-item>
+          <ion-item class="menu-item">
+            <ion-icon name="notifications-outline"></ion-icon >
+            <div style="margin-inline: 0.5rem;" routerLinkActive="true" routerLink="/liste">Notifications</div>
+          </ion-item>
+          <ion-item class="menu-item">
+            <ion-icon name="beer-outline"></ion-icon >
+            <div style="margin-inline: 0.5rem;" routerLinkActive="true" routerLink="/liste">Soirées / Événements</div>
+          </ion-item>
+          <ion-item class="cards-item">
+            <ion-icon name="card-outline"></ion-icon >
+            <div style="margin-inline: 0.5rem;" routerLinkActive="true" routerLink="/liste">Budget</div>
+          </ion-item>
+          <ion-item class="menu-item">
+            <ion-icon name="mail-outline"></ion-icon >
+            <div style="margin-inline: 0.5rem;" routerLinkActive="true" routerLink="/liste">Messagerie</div>
+          </ion-item>
+          <ion-item class="menu-item">
+            <ion-icon name="person-outline"></ion-icon >
+            <div style="margin-inline: 0.5rem;" routerLinkActive="true" routerLink="/liste">Profil</div>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <div style="width: 100%;">
+      <router-outlet id="main"></router-outlet>
+    </div>
+  </ion-split-pane>
 </ion-app>
+
