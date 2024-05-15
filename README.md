@@ -16,7 +16,7 @@ Intervient donc MyColoc, l'application qui permet de gérer tout cela de façon 
 
 Le but est d'avoir, pour la première version:
  * une page pour les utilisateurs non connectés où l'on peut soit créer un nouveau groupe soit en rejoindre un si on a reçu une invitation (bonus avec un backend)
- * une page de profil où l'on peut choisir un avatar, renseigner son nom, prénom et son pseudonyme.
+ * une page de profil où l'on peut choisir un avatar, renseigner son nom, prénom et son pseudonyme. Doit être persisté en hors ligne et synchronisé s'il y a un backend.
  * une page événements où l'on peut créer un événement qui sera persisté dans le stockage local de l'appareil. Lorsque l'événément est terminé, il est possible de le push vers un serveur (s'il y a un backend). On peut choisir le type de l'événement, sa localisation, et une liste de choses nécessaires à amener pour l'événement.
  * une page qui permet la géolocalisation et de partager sa position avec ses colocataires.
 
