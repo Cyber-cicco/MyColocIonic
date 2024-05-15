@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Profil } from '../models/profil';
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,9 @@ export class ProfilService {
   }
 
   persist(profil: Profil) {
-    //TODO : change this to persist to the sql database
+    Preferences.set({
+      key:`profil`,
+      value:JSON.stringify(profil)
+    })
   }
 }

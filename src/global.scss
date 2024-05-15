@@ -43,7 +43,7 @@
 }
 
 
-$colors : #0c090d, #adc698, #d64933, #738290, #f3eff6;
+$colors : #0c090d, #adc698, #d64933, #6285b3, #f3eff6;
 $colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
 
 @for $i from 1 through 5 {
@@ -53,6 +53,34 @@ $colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
   .bg-#{list.nth($colorNames, $i)} {
     background-color: list.nth($colors, $i);
   }
+}
+
+:root {
+  /* Set the background of the entire app */
+  --ion-background-color: #f3eff6;
+
+  --ion-color-secondary: #adc698;
+  --ion-color-secondary-rgb: 0, 102, 0;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: darken(#adc698, 2);
+  --ion-color-secondary-tint: lighten(#adc698, 2);
+
+  --ion-color-primary: #6285b3;
+  --ion-color-primary-rgb: 0, 102, 0;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: darken(#6285b3, 2);
+  --ion-color-primary-tint: lighten(#6285b3, 2);
+
+  --ion-color-danger: #d64933;
+  --ion-color-danger-rgb: 0, 102, 0;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: darken(#d64933, 2);
+  --ion-color-danger-tint: lighten(#d64933, 2);
+  /* Set the font family of the entire app */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }
 
 .h-center {

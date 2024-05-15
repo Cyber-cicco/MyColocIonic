@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActionSheetController } from '@ionic/angular';
 import { Profil } from 'src/app/models/profil';
 import { ProfilService } from 'src/app/service/profil.service';
 import { Camera, CameraResultType } from '@capacitor/camera';
@@ -14,6 +13,23 @@ export class ProfilComponent implements OnInit {
 
   form: FormGroup
   profil?: Profil
+
+
+  constructor(
+    private service: ProfilService,
+    fb: FormBuilder,
+  ) {
+    this.form = fb.group({
+      firstname: ['', []],
+      lastname: ['', []],
+      surname: ['', []],
+    })
+  }
+
+  ngOnInit() {
+    this.profil = this.service.get()
+    this.form.patchValue(this.profil)
+  }
 
   async takePicture() {
     if (!this.profil) return
@@ -29,32 +45,16 @@ export class ProfilComponent implements OnInit {
     }
   }
 
-constructor(
-  private service: ProfilService,
-  private shCtrl : ActionSheetController,
-  fb: FormBuilder,
-) {
-  this.form = fb.group({
-    firstname: ['', []],
-    lastname: ['', []],
-    surname: ['', []],
-  })
-}
+  submit() {
+    if (!this.profil) return
+    Object.assign(this.profil, this.form.value)
+    console.log(this.profil)
+    this.service.persist(this.profil)
+  }
 
-ngOnInit() {
-  this.profil = this.service.get()
-  this.form.patchValue(this.profil)
-}
-
-  async displayPictureChoice() {
-
-}
-
-submit() {
-  if (!this.profil) return
-  Object.assign(this.profil, this.form.value)
-  console.log(this.profil)
-  this.service.persist(this.profil)
-}
+  annuler() {
+    if (this.profil)
+      this.form.patchValue(this.profil)
+  }
 
 }

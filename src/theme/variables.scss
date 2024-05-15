@@ -4,24 +4,6 @@
 // http://ionicframework.com/docs/theming/
 
 /* Set variables for all modes */
-:root {
-  /* Set the background of the entire app */
-  --ion-background-color: #f3eff6;
-  --ion-color-secondary: #adc698;
-  --ion-color-secondary-rgb: 0, 102, 0;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: darken(#adc698, 2);
-  --ion-color-secondary-tint: lighten(#adc698, 2);
-  --ion-color-primary: #738290;
-  --ion-color-primary-rgb: 0, 102, 0;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: darken(#738290, 2);
-  --ion-color-primary-tint: lighten(#738290, 2);
-  /* Set the font family of the entire app */
-  --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
-}
 
 @font-face {
   font-family: montserrat;
