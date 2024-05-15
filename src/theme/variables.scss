@@ -1,2 +1,31 @@
+@use 'sass:list';
+
+// color palette : https://coolors.co/0c090d-adc698-d64933-738290-ede6f2
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+/* Set variables for all modes */
+:root {
+  /* Set the background of the entire app */
+  --ion-background-color: #ede6f2;
+
+  /* Set the font family of the entire app */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url(/assets/font/static/Montserrat-Medium.ttf) format("opentype");
+}
+
+$colors : #0c090d, #adc698, #d64933, #738290, #ede6f2;
+$colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
+
+@for $i from 1 through 5 {
+  .text-#{list.nth($colorNames, $i)} {
+    color: list.nth($colors, $i);
+  }
+  .bg-#{list.nth($colorNames, $i)} {
+    background-color: list.nth($colors, $i);
+  }
+}
