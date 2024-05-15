@@ -7,6 +7,7 @@ import { EvenementComponent } from './evenement/evenement.component';
 import { BudgetComponent } from './budget/budget.component';
 import { NotificationComponent } from './notification/notification.component';
 import { IonicModule } from '@ionic/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     CommonModule,
     ComponentsModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule,
   ]
 })
 export class PageModule { }

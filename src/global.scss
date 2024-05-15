@@ -1,3 +1,4 @@
+@use 'sass:list';
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -42,3 +43,20 @@
 }
 
 
+$colors : #0c090d, #adc698, #d64933, #738290, #f3eff6;
+$colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
+
+@for $i from 1 through 5 {
+  .text-#{list.nth($colorNames, $i)} {
+    color: list.nth($colors, $i);
+  }
+  .bg-#{list.nth($colorNames, $i)} {
+    background-color: list.nth($colors, $i);
+  }
+}
+
+.h-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

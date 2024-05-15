@@ -19,3 +19,11 @@
 .rounded {
   padding: 0px;
 }
+
+.pic-button {
+  color: #ffffff;
+  background-color: #d64933;
+  border-radius: 100%;
+  transform: translateX(20px) translateY(-20px);
+  display: flex;
+}

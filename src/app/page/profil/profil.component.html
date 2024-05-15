@@ -1,18 +1,40 @@
 <app-header title="Mon profil"></app-header>
-<ion-card>
-  <main class="main">
-    <ion-card-header>
-      <div class="avatar">
-        <ion-avatar>
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
-        <button class="rounded">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </button>
+@if(profil) {
+  <ion-card>
+    <main class="main">
+      <ion-card-header>
+        <div class="avatar">
+          <ion-avatar>
+            @if(profil.photo) {
+              <img alt="La grosse tête de l'utilisateur" [src]="profil.photo" />
+            } @else {
+              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            }
+          </ion-avatar>
+          <button (click)="takePicture()" class="pic-button">
+            <ion-icon size="large" name="add-circle-outline"></ion-icon>
+          </button>
 
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <form class="" [formGroup]="form">
+            <div class="ion-padding-top">
+              <ion-input color="primary" label="Prénom" type="text" id="firstname" formControlName="firstname"></ion-input>
+            </div>
+            <div class="ion-padding-top">
+              <ion-input label="Nom" type="text" id="lastname" formControlName="lastname"></ion-input>
+            </div>
+            <div class="ion-padding-top">
+              <ion-input label="Pseudonyme" type="text" id="surname" formControlName="surname"></ion-input>
+            </div>
+          </form>
+        </ion-list>
+      </ion-card-content>
+      <div class="h-center">
+        <ion-button (click)="submit()" color="primary">Modifier</ion-button>
       </div>
-    </ion-card-header>
-    <ion-card-title>Card Title</ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-  </main>
-</ion-card>
+    </main>
+  </ion-card>
+}

@@ -7,6 +7,7 @@ import { Profil } from '../models/profil';
 export class ProfilService {
 
   private _mockProfileInfos :Profil = {
+    id: "1"
   }
 
   constructor() { }
@@ -19,5 +20,9 @@ export class ProfilService {
 
   private _mocketGet() {
     return this._mockProfileInfos
+  }
+
+  persist(profil: Profil) {
+    //TODO : change this to persist to the sql database
   }
 }

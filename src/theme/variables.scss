@@ -1,4 +1,3 @@
-@use 'sass:list';
 
 // color palette : https://coolors.co/0c090d-adc698-d64933-738290-ede6f2
 // For information on how to create your own theme, please see:
@@ -7,8 +6,19 @@
 /* Set variables for all modes */
 :root {
   /* Set the background of the entire app */
-  --ion-background-color: #ede6f2;
-
+  --ion-background-color: #f3eff6;
+  --ion-color-secondary: #adc698;
+  --ion-color-secondary-rgb: 0, 102, 0;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: darken(#adc698, 2);
+  --ion-color-secondary-tint: lighten(#adc698, 2);
+  --ion-color-primary: #738290;
+  --ion-color-primary-rgb: 0, 102, 0;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: darken(#738290, 2);
+  --ion-color-primary-tint: lighten(#738290, 2);
   /* Set the font family of the entire app */
   --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }
@@ -18,14 +28,3 @@
   src: url(/assets/font/static/Montserrat-Medium.ttf) format("opentype");
 }
 
-$colors : #0c090d, #adc698, #d64933, #738290, #ede6f2;
-$colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
-
-@for $i from 1 through 5 {
-  .text-#{list.nth($colorNames, $i)} {
-    color: list.nth($colors, $i);
-  }
-  .bg-#{list.nth($colorNames, $i)} {
-    background-color: list.nth($colors, $i);
-  }
-}
