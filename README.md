@@ -15,12 +15,12 @@ Intervient donc MyColoc, l'application qui permet de gérer tout cela de façon 
 ## VO.1.0
 
 Le but est d'avoir, pour la première version:
- * une page d'accueil. 
- * une page de profil où l'on peut choisir un avatar.
+ * une page pour les utilisateurs non connectés où l'on peut soit créer un nouveau groupe soit en rejoindre un si on a reçu une invitation (bonus avec un backend)
+ * une page de profil où l'on peut choisir un avatar, renseigner son nom, prénom et son pseudonyme.
+ * une page qui permet la géolocalisation et de partager sa position avec ses colocataires.
+
+Avec un backend :
  * une page où l'on peut créer un groupe et envoyer des invitations à des numéros de téléphone donnés.
- * une page du groupe de la coloc avec un chat.
+ * éventuellement une page du groupe de la coloc avec un chat si l'on arrive à mettre en place un backend.
  * éventuellement une page où l'on peut créer un événement unique et un calendrier des événements.
 
-## Conclusion
-
-Il s'agit d'un prototype et d'un exercice, une V1 de cette appli incluerait beaucoup plus de fonctionalités.
