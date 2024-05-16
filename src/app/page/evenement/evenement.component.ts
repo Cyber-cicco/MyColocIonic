@@ -15,9 +15,8 @@ export class EvenementComponent  implements OnInit {
 
   form: FormGroup
   evenements : Evenement[] = []
-  @ViewChild('map')
-  mapRef?: ElementRef<HTMLElement>;
-  newMap?: GoogleMap;
+  @ViewChild('map') mapRef!: ElementRef<HTMLElement>;
+  newMap!: GoogleMap;
 
   constructor(
     private evenementService:EvenementService,
@@ -37,9 +36,9 @@ export class EvenementComponent  implements OnInit {
     })
   }
 
-  async createMap() {
-    this.newMap = await GoogleMap.create({
-      id: 'my-cool-map',
+  createMap() {
+    GoogleMap.create({
+      id: 'eventMap',
       element: this.mapRef!.nativeElement,
       apiKey: environment.apiKey,
       config: {
@@ -49,7 +48,7 @@ export class EvenementComponent  implements OnInit {
         },
         zoom: 8,
       },
-    });
+    }).then(map => this.newMap = map);
   }
 
 }

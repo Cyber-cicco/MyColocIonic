@@ -9,3 +9,15 @@
   align-items: center;
   padding: 0.5rem;
 }
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+capacitor-google-map {
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+}

@@ -7,7 +7,9 @@
 <ion-card>
   <main class="main">
     <ion-card-title><span class="font-montserrat">Créer un événement</span></ion-card-title>
+    <button (click)="createMap()">Create Map</button>
+    <div class="map">
+      <capacitor-google-map #map></capacitor-google-map>
+    </div>
   </main>
-  <capacitor-google-map #map></capacitor-google-map>
-  <button (click)="createMap()">Create Map</button>
 </ion-card>
