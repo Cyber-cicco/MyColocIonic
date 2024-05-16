@@ -56,6 +56,10 @@ $colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
   }
 }
 
+.bg-light {
+  background-color: #ffffff;
+}
+
 :root {
   /* Set the background of the entire app */
   --ion-background-color: #f3eff6;
@@ -80,6 +84,13 @@ $colorNames : 'night', 'olivine', 'chili', 'slate', 'white';
   --ion-color-danger-contrast-rgb: 255, 255, 255;
   --ion-color-danger-shade: darken(#d64933, 2);
   --ion-color-danger-tint: lighten(#d64933, 2);
+
+  --ion-color-light: #ffffff;
+  --ion-color-light-rgb: 0, 102, 0;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: darken(#ffffff, 2);
+  --ion-color-light-tint: lighten(#ffffff, 2);
   /* Set the font family of the entire app */
   --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }

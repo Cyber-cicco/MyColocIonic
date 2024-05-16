@@ -13,10 +13,22 @@ import { environment } from 'src/environments/environment';
 })
 export class EvenementComponent  implements OnInit {
 
+
   form: FormGroup
   evenements : Evenement[] = []
   @ViewChild('map') mapRef!: ElementRef<HTMLElement>;
   newMap!: GoogleMap;
+  mapLaunched = false
+  mapSuccess = true;
+  mapFinishedLoading = false;
+  searchResults : string[] = []
+  searchValues = [
+    "java",
+    "javascript",
+    "golang",
+    "erlang",
+    "elixir",
+  ]
 
   constructor(
     private evenementService:EvenementService,
@@ -25,6 +37,7 @@ export class EvenementComponent  implements OnInit {
     this.form = fb.group({
       libelle:['',[]],
       date:['',[]],
+      localisation:['',[]],
     })
   }
 
@@ -36,19 +49,55 @@ export class EvenementComponent  implements OnInit {
     })
   }
 
+  markerIds : string[] = []
+
   createMap() {
-    GoogleMap.create({
-      id: 'eventMap',
-      element: this.mapRef!.nativeElement,
-      apiKey: environment.apiKey,
-      config: {
-        center: {
-          lat: 33.6,
-          lng: -117.9,
+    if (this.mapLaunched) return
+    this.mapLaunched = true
+    const options = {
+      enableHighAccuracy: false,
+      maximumAge: 0,
+    };
+    const geoSucess : PositionCallback = (pos) => {
+      this.mapFinishedLoading = true
+      GoogleMap.create({
+        id: 'eventMap',
+        element: this.mapRef!.nativeElement,
+        apiKey: environment.apiKey,
+        config: {
+          center: {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          },
+          zoom: 15,
         },
-        zoom: 8,
-      },
-    }).then(map => this.newMap = map);
+      }).then(map => {
+        this.newMap = map
+        this.newMap.enableTouch()
+        this.newMap.setOnMapClickListener((e)=> {
+          this.newMap.removeMarkers(this.markerIds)
+          this.markerIds = []
+          this.newMap.addMarker({
+            coordinate: {lat: e.latitude, lng:e.longitude}
+          }).then((id)=> {
+            this.markerIds.push(id)
+          })
+        })
+      });
+    }
+    const geoError = (err:any) => {
+      this.mapFinishedLoading = true
+      this.mapSuccess = false
+      console.error(err)
+    }
+    navigator.geolocation.getCurrentPosition(geoSucess, geoError, options)
   }
 
+  search(val: string) {
+    if (val === "") {
+      this.searchResults = [];
+      return
+    }
+    this.searchResults = this.searchValues.filter(v => v.includes(val))
+  }
 }

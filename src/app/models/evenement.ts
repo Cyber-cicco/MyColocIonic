@@ -5,7 +5,7 @@ export interface Evenement {
   id: string
   libelle:string
   date:Date
-  localisation: {x:string, y:string}
+  localisation: {lat:number, lng:number}
   apports : Apport[]
   organisateur: Profil
 }

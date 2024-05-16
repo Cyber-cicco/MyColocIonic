@@ -3,13 +3,39 @@
   <main class="main">
     <ion-card-title><span class="font-montserrat">Événements à venir</span></ion-card-title>
   </main>
-</ion-card>
-<ion-card>
-  <main class="main">
-    <ion-card-title><span class="font-montserrat">Créer un événement</span></ion-card-title>
-    <button (click)="createMap()">Create Map</button>
-    <div class="map">
-      <capacitor-google-map #map></capacitor-google-map>
-    </div>
-  </main>
+  <ion-card-content>
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item id="open-new" (click)="createMap()" slot="header" color="light">
+          <ion-label>Nouvel événement</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-list>
+            <form class="" [formGroup]="form">
+              <div class="ion-padding-top">
+                <ion-input label="Donnez lui un nom !" type="text" id="libelle" formControlName="libelle"></ion-input>
+              </div>
+              <div class="ion-padding-top">
+                <ion-input label="Pour quelle date ?" type="date" id="date" formControlName="date"></ion-input>
+              </div>
+              <div class="map ion-padding-top">
+                <ion-input formControlName="localisation" (ngModelChange)="search($event)" label="Où ?" type="search" list="caca"></ion-input>
+                @if (searchResults.length != 0) {
+                  <ion-list class="bg-light">
+                    @for (res of searchResults; track res) {
+                      <ion-item color="light" class="bg-light">{{res}}</ion-item>
+                    }
+                  </ion-list>
+                }
+                @if (!mapSuccess) {
+                  Couldn't access maps
+                }
+                <capacitor-google-map #map></capacitor-google-map>
+              </div>
+            </form>
+          </ion-list>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-card-content>
 </ion-card>
