@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentsModule } from '../components/components.module';
 import { ProfilComponent } from './profil/profil.component';
@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ComponentsModule,
     IonicModule,
     ReactiveFormsModule,
-  ]
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PageModule { }

@@ -1,0 +1,11 @@
+@mixin col() {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  @include col();
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+}

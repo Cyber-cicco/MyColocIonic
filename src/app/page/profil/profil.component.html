@@ -6,7 +6,7 @@
         <div class="avatar">
           <ion-avatar>
             @if(profil.photo) {
-              <img alt="La grosse tête de l'utilisateur" [src]="profil.photo" />
+              <img alt="La grosse tête de l'utilisateur" [src]="'data:image/png;base64,' + profil.photo">
             } @else {
               <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
             }

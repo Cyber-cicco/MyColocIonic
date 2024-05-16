@@ -14,9 +14,9 @@ export class ProfilService {
   constructor() { }
 
   //Here, we have to get the profile from the sqlite database.
-  get() {
+  async get() {
     //TODO : change this with a call to the sqlite database
-    return this._mocketGet()
+    return await Preferences.get({key:'profil'})
   }
 
   private _mocketGet() {

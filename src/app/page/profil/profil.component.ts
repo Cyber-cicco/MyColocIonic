@@ -16,7 +16,7 @@ export class ProfilComponent implements OnInit {
 
 
   constructor(
-    private service: ProfilService,
+    private profilService: ProfilService,
     fb: FormBuilder,
   ) {
     this.form = fb.group({
@@ -27,8 +27,15 @@ export class ProfilComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.profil = this.service.get()
-    this.form.patchValue(this.profil)
+    this.profilService.get().then((profil) => {
+      if (profil.value) {
+        this.profil = JSON.parse(profil.value)
+        this.form.patchValue(this.profil!)
+      } else {
+        console.log("test")
+        this.profil = {id:"1"}
+      }
+    })
   }
 
   async takePicture() {
@@ -36,12 +43,13 @@ export class ProfilComponent implements OnInit {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: true,
-      resultType: CameraResultType.Uri
+      resultType: CameraResultType.Base64
     });
 
-    if (image.webPath) {
-      const imageUrl = image.webPath;
+    if (image.base64String) {
+      const imageUrl = image.base64String;
       this.profil.photo = imageUrl;
+      this.profilService.persist(this.profil)
     }
   }
 
@@ -49,12 +57,11 @@ export class ProfilComponent implements OnInit {
     if (!this.profil) return
     Object.assign(this.profil, this.form.value)
     console.log(this.profil)
-    this.service.persist(this.profil)
+    this.profilService.persist(this.profil)
   }
 
   annuler() {
-    if (this.profil)
-      this.form.patchValue(this.profil)
+    if (this.profil) this.form.patchValue(this.profil)
   }
 
 }

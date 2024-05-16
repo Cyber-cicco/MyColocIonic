@@ -1,4 +1,13 @@
-<app-header title="Evenements"></app-header>
-<p>
-  evenement works!
-</p>
+<app-header title="Événements"></app-header>
+<ion-card>
+  <main class="main">
+    <ion-card-title><span class="font-montserrat">Événements à venir</span></ion-card-title>
+  </main>
+</ion-card>
+<ion-card>
+  <main class="main">
+    <ion-card-title><span class="font-montserrat">Créer un événement</span></ion-card-title>
+  </main>
+  <capacitor-google-map #map></capacitor-google-map>
+  <button (click)="createMap()">Create Map</button>
+</ion-card>
