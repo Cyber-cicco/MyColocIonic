@@ -4,6 +4,8 @@ import { ProfilComponent } from './page/profil/profil.component';
 import { EvenementComponent } from './page/evenement/evenement.component';
 import { NotificationComponent } from './page/notification/notification.component';
 import { BudgetComponent } from './page/budget/budget.component';
+import { LocalisationComponent } from './page/localisation/localisation.component';
+import { MessagerieComponent } from './page/messagerie/messagerie.component';
 
 const routes: Routes = [
   {
@@ -28,7 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'localisation',
-    component: ProfilComponent
+    component: LocalisationComponent
+  },
+  {
+    path: 'messages',
+    component: MessagerieComponent
   },
   {
     path: '',

@@ -36,13 +36,6 @@
               </div>
               <div class="map ion-padding-top">
                 <ion-input formControlName="localisation" label="Où ?" type="search" list="caca"></ion-input>
-                @if (searchResults.length != 0) {
-                  <ion-list class="bg-light">
-                    @for (res of searchResults; track res) {
-                      <ion-item color="light" class="bg-light">{{res}}</ion-item>
-                    }
-                  </ion-list>
-                }
                 @if (!mapFinishedLoading) {
                   <div class="spinner">
                     <ion-spinner></ion-spinner>

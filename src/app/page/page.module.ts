@@ -10,6 +10,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EvenementModalComponent } from './evenement/fragments/evenement-modal/evenement-modal.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 
 
@@ -18,6 +19,7 @@ import { EvenementModalComponent } from './evenement/fragments/evenement-modal/e
   declarations: [
     ProfilComponent,
     LocalisationComponent,
+    MessagerieComponent,
     EvenementComponent,
     EvenementModalComponent,
     BudgetComponent,

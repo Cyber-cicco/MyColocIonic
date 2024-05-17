@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GetResult } from '@capacitor/preferences';
 import { Coords, Evenement } from 'src/app/models/evenement';
 import { EvenementService } from 'src/app/service/evenement.service';
 import { environment } from 'src/environments/environment';
@@ -9,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import { ProfilService } from 'src/app/service/profil.service';
 import { EvenementModalComponent } from './fragments/evenement-modal/evenement-modal.component';
 import { ModalController } from '@ionic/angular';
-import { last } from 'rxjs';
 
 /**
 * Class letting you check your the events for your coloc
@@ -43,8 +41,6 @@ export class EvenementComponent  implements OnInit {
 
   //True when the map is shown
   mapFinishedLoading = false;
-
-  searchResults : string[] = []
 
   constructor(
     private evenementService:EvenementService,
@@ -146,17 +142,6 @@ export class EvenementComponent  implements OnInit {
   * you need to use a 3rd party library
   */
   search(val: string) {
-
-    if (val === "" || val.length < 3) {
-      this.searchResults = [];
-      return
-    }
-    if (this.location) {
-      this.http.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=amoeba&location=37.76999%2C-122.44696&radius=500&strictbounds=false&types=establishment&language=fr&key=${environment.apiKey}`)
-        .subscribe((val)=> {
-        console.log(val)
-      })
-    }
   }
 
   async onSubmit() {
@@ -194,6 +179,9 @@ export class EvenementComponent  implements OnInit {
     }
   }
 
+  /* Persist the array without the item matching the id
+  * Really inefficient way of doing it but for a with few datas it works
+  * */
   delete(id?:string) {
     this.evenementService.persist(this._evenements.filter(e => e.id !== id))
     this._getEvents()
