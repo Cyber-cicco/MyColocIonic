@@ -25,3 +25,9 @@ Avec un backend :
  * éventuellement une page du groupe de la coloc avec un chat si l'on arrive à mettre en place un backend.
  * éventuellement une page où l'on peut créer un événement unique et un calendrier des événements.
 
+## Installer : 
+
+Remplacer l'attribute apiKey dans environnement.ts et envirionnement.prod.ts par votre clé personnel
+
+Si l'on cherche à construire l'appli pour android, suivre les informations de la [documentation](https://capacitorjs.com/docs/apis/google-maps) pour ajouter la clé d'API avant de build.
+
