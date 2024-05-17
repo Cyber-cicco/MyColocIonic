@@ -28,13 +28,8 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit() {
     this.profilService.get().then((profil) => {
-      if (profil.value) {
-        this.profil = JSON.parse(profil.value)
-        this.form.patchValue(this.profil!)
-      } else {
-        console.log("test")
-        this.profil = {id:"1"}
-      }
+      this.profil = profil
+      this.form.patchValue(this.profil!)
     })
   }
 

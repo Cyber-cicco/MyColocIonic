@@ -16,7 +16,11 @@ export class ProfilService {
   //Here, we have to get the profile from the sqlite database.
   async get() {
     //TODO : change this with a call to the sqlite database
-    return await Preferences.get({key:'profil'})
+    const value = (await Preferences.get({key:'profil'})).value
+    if (value) {
+      return JSON.parse(value) as Profil
+    }
+    return {id:"1"} as Profil
   }
 
   private _mocketGet() {

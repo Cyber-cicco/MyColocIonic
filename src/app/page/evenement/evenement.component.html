@@ -4,6 +4,22 @@
     <ion-card-title><span class="font-montserrat">Événements à venir</span></ion-card-title>
   </main>
   <ion-card-content>
+    <ion-list>
+      @for (e of displayedEvts;track e.id;) {
+        <ion-item>
+          <div class="stretched-line">
+            <span>{{e.libelle}}</span>
+            <span class="grow"></span>
+            <ion-button (click)="openModal(e)" color="">
+              <ion-icon name="eye-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="delete(e.id)" color="danger">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-item>
+      }
+    </ion-list>
     <ion-accordion-group>
       <ion-accordion value="first">
         <ion-item id="open-new" (click)="createMap()" slot="header" color="light">
@@ -19,7 +35,7 @@
                 <ion-input label="Pour quelle date ?" type="date" id="date" formControlName="date"></ion-input>
               </div>
               <div class="map ion-padding-top">
-                <ion-input formControlName="localisation" (ngModelChange)="search($event)" label="Où ?" type="search" list="caca"></ion-input>
+                <ion-input formControlName="localisation" label="Où ?" type="search" list="caca"></ion-input>
                 @if (searchResults.length != 0) {
                   <ion-list class="bg-light">
                     @for (res of searchResults; track res) {
@@ -27,12 +43,21 @@
                     }
                   </ion-list>
                 }
+                @if (!mapFinishedLoading) {
+                  <div class="spinner">
+                    <ion-spinner></ion-spinner>
+                    Loading maps
+                  </div>
+                }
                 @if (!mapSuccess) {
                   Couldn't access maps
                 }
                 <capacitor-google-map #map></capacitor-google-map>
               </div>
             </form>
+            <div class="center">
+              <ion-button (click)="onSubmit()" [disabled]="form.invalid">Créer</ion-button>
+            </div>
           </ion-list>
         </div>
       </ion-accordion>

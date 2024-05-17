@@ -2,10 +2,12 @@ import { Apport } from "./apport"
 import { Profil } from "./profil"
 
 export interface Evenement {
-  id: string
+  id?: string
   libelle:string
   date:Date
-  localisation: {lat:number, lng:number}
+  localisation: {nom:string, place?:Coords}
   apports : Apport[]
   organisateur: Profil
 }
+
+export type Coords = {lat:number, lng:number}

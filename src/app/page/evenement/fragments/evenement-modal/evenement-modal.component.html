@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Retour</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  @if (evenement) {
+    <ion-card class="ion-padding">
+      <ion-card-title class="font-montserrat">{{evenement.libelle}}</ion-card-title>
+      <ion-item class="item">
+        <ion-avatar>
+          @if(evenement.organisateur.photo) {
+            <img alt="La grosse tête de l'utilisateur" [src]="'data:image/png;base64,' + evenement.organisateur.photo">
+          } @else {
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          }
+        </ion-avatar>
+        <div class="px"></div>
+        <ion-card-subtitle>
+          {{evenement.organisateur.firstname}}
+        </ion-card-subtitle>
+      </ion-item>
+      <ion-card-content>
+        <ion-item>{{evenement.date | date : undefined : undefined : 'fr'}}</ion-item>
+        <ion-item>{{evenement.localisation.nom}}</ion-item>
+        @if (evenement.localisation.place) {
+          <div class="map ion-padding-top">
+            <capacitor-google-map #map></capacitor-google-map>
+          </div>
+        }
+      </ion-card-content>
+    </ion-card>
+  }
+</ion-content>
