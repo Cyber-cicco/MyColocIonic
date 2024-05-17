@@ -29,5 +29,14 @@ Avec un backend :
 
 Remplacer l'attribute apiKey dans environnement.ts et envirionnement.prod.ts par votre clé personnel
 
-Si l'on cherche à construire l'appli pour android, suivre les informations de la [documentation](https://capacitorjs.com/docs/apis/google-maps) pour ajouter la clé d'API avant de build.
+Si l'on cherche à construire l'appli pour android il faut également rentrer la clé API dans le manifestAndroid.xml à la place de `YOUR_API_KEY`
 
+## Ce qui est disponible
+
+ * Une page de profil où l'on peut renseigner nom, prénom et pseudonyme, et peut être persisté hors ligne.
+ * Une page événements où l'on peut créer un événement qui sera persisté dans le stockage local de l'appareil. On peut choisir le nom de l'événement, sa date et sa localisation. On peut observer les événements à venir sur cette même page
+
+ ## Les pêchés d'orgueil
+ * une page pour les utilisateurs non connectés où l'on peut soit créer un nouveau groupe soit en rejoindre un si on a reçu une invitation (bonus avec un backend)
+ * le backend
+ * une page qui permet la géolocalisation et de partager sa position avec ses colocataires.
