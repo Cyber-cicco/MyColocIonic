@@ -26,6 +26,7 @@ export class ProfilComponent implements OnInit {
     })
   }
 
+  /* Loads a profil if already set.*/
   ngOnInit() {
     this.profilService.get().then((profil) => {
       this.profil = profil
@@ -33,10 +34,15 @@ export class ProfilComponent implements OnInit {
     })
   }
 
+  /* Gives an option between taking a picture through camera
+  * or browsing your filesystme to get one
+  * Is saved a a base64 encoded image of low quality, because
+  * it will always be presented as a small avatar.
+  */
   async takePicture() {
     if (!this.profil) return
     const image = await Camera.getPhoto({
-      quality: 90,
+      quality: 30,
       allowEditing: true,
       resultType: CameraResultType.Base64
     });
@@ -48,13 +54,14 @@ export class ProfilComponent implements OnInit {
     }
   }
 
+  /* Persists the profile into the storage*/
   submit() {
     if (!this.profil) return
     Object.assign(this.profil, this.form.value)
-    console.log(this.profil)
     this.profilService.persist(this.profil)
   }
 
+  /* Puts back the form to it's original state*/
   annuler() {
     if (this.profil) this.form.patchValue(this.profil)
   }

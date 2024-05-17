@@ -11,6 +11,9 @@ import { ModalController } from '@ionic/angular';
 
 /**
 * Class letting you check your the events for your coloc
+*
+* STATE MUTATIONS:
+*  - Ability to put an Evenement in the EvenementService BehaviourSubject
 */
 @Component({
   selector: 'app-evenement',
@@ -144,6 +147,12 @@ export class EvenementComponent  implements OnInit {
   search(val: string) {
   }
 
+  /**
+  * Persists a new Event
+  *
+  * STATE REQUIREMENTS:
+  * - Should only be called if a form is valid
+  */
   async onSubmit() {
     if (!this.form.valid) return
     const event : Evenement = {
@@ -165,6 +174,12 @@ export class EvenementComponent  implements OnInit {
     this.form.reset()
   }
 
+  /**
+  * Opens a modal window with details about an Evenement
+  *
+  * STATE MUTATIONS:
+  *  - Puts an Evenement in the EvenementService BehaviourSubject
+  */
   async openModal(e : Evenement) {
     this.evenementService.setCurrent(e)
     const modal = await this.modalCtrl.create({
@@ -179,7 +194,8 @@ export class EvenementComponent  implements OnInit {
     }
   }
 
-  /* Persist the array without the item matching the id
+  /**
+  * Persist the array without the item matching the id
   * Really inefficient way of doing it but for a with few datas it works
   * */
   delete(id?:string) {

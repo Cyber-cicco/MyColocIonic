@@ -12,6 +12,12 @@ export class EvenementService {
 
   constructor() { }
 
+  /**
+  * Gets all elements from the database
+  *
+  * Since the JSON parser doesn't automatically transforms date strings into
+  * strings, maps every Evenement to do so.
+  */
   async get() {
     const evts = await Preferences.get({key:'evenements'})
     if (evts.value) {
@@ -23,8 +29,12 @@ export class EvenementService {
     }
   }
 
+  /**
+  * Persists all the Evenement in the database
+  *
+  * TODO : ADD VALIDATION
+  */
   persist(evts: Evenement[]) {
-    console.log(evts)
     Preferences.set({
       key:`evenements`,
       value:JSON.stringify(evts)
