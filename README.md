@@ -36,7 +36,7 @@ Si l'on cherche à construire l'appli pour android il faut également rentrer la
  * Une page de profil où l'on peut renseigner nom, prénom et pseudonyme, et peut être persisté hors ligne.
  * Une page événements où l'on peut créer un événement qui sera persisté dans le stockage local de l'appareil. On peut choisir le nom de l'événement, sa date et sa localisation. On peut observer les événements à venir sur cette même page
 
- ## Les pêchés d'orgueil
+ ## Ce qui aurait pu mais n'a pas été
  * une page pour les utilisateurs non connectés où l'on peut soit créer un nouveau groupe soit en rejoindre un si on a reçu une invitation (bonus avec un backend)
  * le backend
  * une page qui permet la géolocalisation et de partager sa position avec ses colocataires.
